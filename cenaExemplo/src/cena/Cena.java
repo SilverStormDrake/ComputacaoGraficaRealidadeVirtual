@@ -11,39 +11,68 @@ import com.jogamp.opengl.glu.GLU;
 public class Cena implements GLEventListener{    
     private float xMin, xMax, yMin, yMax, zMin, zMax;    
     GLU glu;
-    
-    @Override
-    public void init(GLAutoDrawable drawable) {
-        //dados iniciais da cena
-        glu = new GLU();
-        //Estabelece as coordenadas do SRU (Sistema de Referencia do Universo)
-        xMin = yMin = zMin = -1;
-        xMax = yMax = zMax = 1;        
-    }
 
     @Override
-    public void display(GLAutoDrawable drawable) {  
+    public void display(GLAutoDrawable drawable) {
         //obtem o contexto Opengl
-        GL2 gl = drawable.getGL().getGL2();                
+        GL2 gl = drawable.getGL().getGL2();
         //define a cor da janela (R, G, G, alpha)
-        gl.glClearColor(0, 0, 0, 1);        
+        gl.glClearColor(0, 0, 0, 1);
         //limpa a janela com a cor especificada
-        gl.glClear(GL2.GL_COLOR_BUFFER_BIT);       
+        gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
         gl.glLoadIdentity(); //lê a matriz identidade
-        
+
         /*
-            desenho da cena        
+            desenho da cena
         *
         */
-        
-        gl.glColor3f(1,1,1); //cor branca        
-              
-        //desenha um retangulo
+
+        gl.glColor3f(1,1,1); //cor branca
+
+        gl.glPointSize(4);
+
+        //pontos
         gl.glBegin(GL2.GL_POINTS);
-            gl.glVertex2f(0, 0);            
-        gl.glEnd(); 
-        
-        gl.glFlush();      
+        gl.glVertex2f(-0.9f, 0.9f);
+        gl.glVertex2f(-0.7f, 0.9f);
+        gl.glVertex2f(-0.7f, 0.7f);
+        gl.glVertex2f(-0.9f, 0.7f);
+        gl.glEnd();
+        gl.glFlush();
+
+        //line_loop
+        gl.glBegin(GL2.GL_LINE_LOOP);
+        gl.glVertex2f(-0.2f, 0.5f);
+        gl.glVertex2f(-0.2f, 0.2f);
+        gl.glVertex2f(-0.3f, 0.3f);
+        gl.glVertex2f(-0.4f, 0.4f);
+        gl.glVertex2f(-0.5f, 0.3f);
+        gl.glVertex2f(-0.4f, 0.5f);
+        gl.glVertex2f(-0.3f, 0.4f);
+        gl.glVertex2f(-0.2f, 0.5f);
+        gl.glEnd();
+        gl.glFlush();
+
+        gl.glBegin(GL2.GL_POLYGON);
+        gl.glVertex2f(-0.2f, -0.1f);
+        gl.glVertex2f(-0.3f, -0.5f);
+        gl.glVertex2f(-0.9f, -0.4f);
+        gl.glVertex2f(-0.7f, -0.1f);
+        gl.glVertex2f(-0.5f, -0.2f);
+        gl.glVertex2f(-0.2f, -0.1f);
+        gl.glEnd();
+        gl.glFlush();
+
+        gl.glBegin(GL2.GL_LINES);
+        gl.glVertex2f(0f,0f);
+        gl.glVertex2f(0.1f,0f);
+        gl.glVertex2f(0f,0f);
+        gl.glVertex2f(0f,0.1f);
+        gl.glVertex2f(0f,0f);
+        gl.glVertex2f(-0.1f,-0.1f);
+        gl.glEnd();
+        gl.glFlush();
+
     }
 
     @Override
