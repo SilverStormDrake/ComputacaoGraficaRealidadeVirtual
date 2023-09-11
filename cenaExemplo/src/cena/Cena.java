@@ -73,6 +73,21 @@ public class Cena implements GLEventListener{
         gl.glEnd();
         gl.glFlush();
 
+        gl.glBegin(GL2.GL_TRIANGLE_FAN);
+        gl.glVertex2f(0.6f, -0.6f);
+        gl.glVertex2f(0.8f, -0.7f);
+        gl.glVertex2f(0.7f, -0.8f);
+        gl.glVertex2f(0.6f, -0.6f);
+        gl.glVertex2f(0.7f, -0.8f);
+        gl.glVertex2f(0.2f, -0.9f);
+        gl.glVertex2f(0.6f, -0.6f);
+        gl.glVertex2f(0.2f, -0.9f);
+        gl.glVertex2f(0.2f, -0.5f);
+        gl.glVertex2f(0.6f, -0.6f);
+        gl.glVertex2f(0.6f, -0.5f);
+        gl.glVertex2f(0.5f, 0.4f);
+        gl.glEnd();
+        gl.glFlush();
     }
 
     @Override
@@ -104,8 +119,13 @@ public class Cena implements GLEventListener{
         gl.glMatrixMode(GL2.GL_MODELVIEW);
         gl.glLoadIdentity(); //lê a matriz identidade
         System.out.println("Reshape: " + width + ", " + height);
-    }    
-       
+    }
+
+    @Override
+    public void init(GLAutoDrawable glAutoDrawable) {
+
+    }
+
     @Override
     public void dispose(GLAutoDrawable drawable) {}         
 }
